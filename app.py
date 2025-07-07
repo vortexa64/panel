@@ -1,3 +1,9 @@
+import threading
+import bot  # file bot.py kamu
+
+# Ini buat jalanin bot dan panel bareng
+threading.Thread(target=bot.run).start()
+
 from flask import Flask
 app = Flask(__name__)
 
