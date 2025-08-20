@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   panel:
@@ -22,7 +22,6 @@ services:
       SESSION_DRIVER: redis
       QUEUE_DRIVER: redis
       REDIS_HOST: redis
-
     volumes:
       - ./panel:/app/var
     depends_on:
@@ -35,6 +34,17 @@ services:
     environment:
       MYSQL_DATABASE: panel
       MYSQL_USER: pterodactyl
+      MYSQL_PASSWORD: passwordku
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - db_data:/var/lib/mysql
+
+  redis:
+    image: redis:alpine
+    restart: unless-stopped
+
+volumes:
+  db_data:      MYSQL_USER: pterodactyl
       MYSQL_PASSWORD: passwordku
       MYSQL_ROOT_PASSWORD: rootpassword
     volumes:
